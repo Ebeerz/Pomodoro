@@ -1,0 +1,497 @@
+html {
+    height: 100%;
+    color: #fff;
+}
+
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    /* background-color: #7EB685; */
+    background-color: rgb(186, 73, 73);
+    font-family: "PT Sans", sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.button {
+    font-size: 18px;
+    display: block;
+    color: #fff;
+    /* background-color: #7EB685; */
+    background-color: rgb(186, 73, 73);
+    border: none;
+    border-radius: 15px;
+    height: 42px;
+    min-width: 120px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+@media(max-width: 800px) {
+    .button {
+        min-width: 120px;
+    }
+}
+
+@media(max-width: 500px) {
+    .button {
+        font-size: 16px;
+        min-width: 100px;
+    }
+}
+
+@media(max-width: 400px) {
+    .button {
+        font-size: 14px;
+        min-width: 90px;
+    }
+}
+
+.button__active {
+    background-color: rgb(252, 252, 252);
+    color: rgb(211, 95, 95);
+}
+
+.button:hover {
+    background-color: rgb(211, 95, 95);
+}
+
+.button:active {
+    background-color: rgb(240, 150, 150)
+}
+
+.button__active:hover {
+    background-color: rgb(252, 252, 252);
+    color: rgb(211, 95, 95);
+}
+
+.header {
+    padding: 1px 3vw 1px 3vw;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    text-transform: uppercase;
+    display: flex;
+    width:fit-content;
+    align-items: center;
+}
+
+.logo__text {
+    margin: 0 5px 0px 0px;
+    padding: 0;
+}
+
+.settings {
+    display: flex;
+    align-items: center;    
+}
+
+.settings__button {
+    margin-right: 1vw;
+}
+
+.pomodoro-clock {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.pomodoro-clock__container {
+    border-radius: 25px;
+    display: grid;
+    grid-template-rows: 42px 300px 42px 1fr;
+    row-gap: 50px;
+    margin: 0 auto;
+    padding: 50px;
+    width: 400px;
+    /* background-color: #FF7059;  */
+    background-color: #c15c5c; 
+}
+
+
+
+.timer {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    /* border: 4px solid #fff; */
+    border: 4px solid #E65F5f;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    background-image: url("/src/tomato-full.svg");
+    background-size: 100%;
+}
+
+@media(max-width: 1600px) {
+    .pomodoro-clock__container {
+        border-radius: 20px;
+        grid-template-rows: 42px 250px 42px 1fr;
+        row-gap: 30px;
+        padding: 30px;
+        width: 400px;
+    }
+    .timer {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media(max-width: 500px) {
+    .pomodoro-clock__container {
+        border-radius: 20px;
+        grid-template-rows: 42px 75vw 42px 1fr;
+        row-gap: 30px;
+        padding: 3vw;
+        width: 90vw;
+    }
+    .timer {
+        width: 75vw;
+        height: 75vw;
+    }
+}
+
+
+.timer__semicircle {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: left center;
+    transition: transform 0.8s;
+    /* display: none; */
+}
+
+.timer__semicircle:nth-child(1) {
+    z-index: 2;
+
+    /* background-color: #FF7059; */
+    background-color: #c15c5c;
+}
+
+.timer__semicircle:nth-child(2) {
+    z-index: 3;
+
+    /* background-color: #FF7059; */
+    background-color: #c15c5c;
+}
+
+.timer__semicircle:nth-child(3) {
+    z-index: 4;
+    /* background-color: #FF7059; */
+    background-color: #c15c5c;
+    background-image: url("/src/tomato-full.svg");
+    background-size: 300px;
+    background-position: 100% 0%;
+    background-repeat: no-repeat;
+}
+
+.timer__outermost-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    z-index: 5;    
+}
+
+.timer__value {
+    z-index: 5;
+}
+
+/* hover testing */
+
+/* .page-main:hover .timer__semicircle:nth-child(1){
+    transform: rotate(180deg);
+    transition: 1s linear;
+}
+.page-main:hover .timer__semicircle:nth-child(2){
+    transform: rotate(360deg);
+    transition: 2s linear;
+}
+.page-main:hover .timer__semicircle:nth-child(3){
+    opacity: 0;
+    transition: opacity 0s 1s;
+} */
+
+.timer__value {
+    font-size: 50px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.pomodoro-clock__button-container {
+    display: flex;
+    justify-content: space-between;
+    height: 42px;
+}
+
+
+.pomodoro-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pomodoro-counter__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.pomodoro-counter__img-container{
+    display: flex;
+    gap:10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pomodoro-counter__pomodoro-count {
+    font-size: 18px;
+    padding: 0;
+    margin: 0 0 10px 0;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.pomodoro-counter__pomodoro-img {
+    height: 50px;
+    width: 50px;
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(31, 29, 29, 0.7);
+    left: 0;
+    top: 0;
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.modal__container {
+    width: 400px;
+    height: 400px;
+    padding: 15px;
+    background-color: #fff;
+    margin: 25vh auto;
+    border-radius: 20px;
+    position: relative;
+}
+
+@media(max-width: 500px) {
+    .modal__container {
+        width: 90vw;
+        height: 60vh;
+        padding: 10px;
+        margin: 25vh auto;
+        font-size: 18px;
+    }
+
+    .mode__name,
+    .sound__label {
+        font-size: 18px;
+    }
+}
+
+.modal__heading {
+    padding: 0 0 10px 0;
+    margin: 0 auto;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 2px solid rgba(31, 29, 29, 0.7);
+}
+
+.modal__close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal__close-button::before,
+.modal__close-button::after {
+	content: '';
+	position: absolute;
+	top: 10px;
+	display: block;
+	width: 24px;
+	height: 3px;
+	background: rgba(31, 29, 29, 0.7);
+}
+
+.modal__close-button::before {
+	transform: rotate(45deg);
+}
+
+.modal__close-button::after {
+	transform: rotate(-45deg);
+}
+
+.modal__parameters {
+    border-bottom: 2px solid #efefef;
+}
+
+.parameters {
+    padding: 10px 0px 10px 0;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    column-gap: 33px;
+}
+
+@media(max-width: 500px) {
+    .parameters {
+        padding: 10px 0px 10px 0;
+        display: grid;
+        grid-template-columns: 20vw 20vw 20vw;
+        column-gap: 33px;
+    }
+    
+    .parameter__name {
+        font-size: 15px;
+    }
+}
+
+
+
+.parameters__heading {
+    margin: 5px 0 5px 0;
+    padding: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.error-message {
+    color: rgb(211, 95, 95);
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+
+.parameter__input {
+    background-color: #efefef;
+    font-size: 15px;
+    width: 90px;
+    height: 25px;
+    color: rgba(41, 37, 37, 0.7);
+    border-radius: 4px;
+    border: none;
+    padding: 5px;
+}
+
+.mods__heading {
+    margin: 10px 0 10px 0;
+}
+
+.mode {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0 10px 0;
+}
+
+.sound {
+    padding: 0px 0px 10px 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sound__heading {
+    margin: 10px 0 10px 0;
+}
+
+.sound__mode {
+    margin-bottom: 10px;
+}
+
+.sound__volume {
+    position: relative;
+}
+
+.sound__range {
+    position: absolute;
+    left: 73px;
+}
+
+  
+/* The slider itself */
+.sound__range {
+    position: absolute;
+    top: 7px;
+    width: 125px;
+    height: 5px;
+    border-radius: 1px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.sound__range:hover {
+opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.sound__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; 
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.sound__range::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+
+.closed {
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+.hidden {
+    display: none;
+}

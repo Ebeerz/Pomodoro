@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/src/tomato.svg">
+    <link rel="stylesheet" href="style.css">
+    <title>Pomodoro</title>
+</head>
+<body class="page__body">
+    <header class="page__header header">
+        <a class="header__logo logo">
+            <p class="logo__text">Pomodoro</p>
+            <img src="/src/tomato.svg" alt="tomato image" class="logo__img" height="50px" width="50px">
+        </a>
+
+        <div class="header__settings settings">
+            <button class="settings__button settings__button-parameters button">Parameters</button>
+        </div>
+    </header>
+    <main class="page__main page-main">
+        <section class="page-main__pomodoro-clock pomodoro-clock">
+            <div class="pomodoro-clock__container">
+                <div class="pomodoro-clock__button-container">
+                    <button id="pomodoro-mode-button" data-mode="pomodoro" class="pomodoro-clock__button button button__active">Pomodoro</button>
+                    <button id="short-break-mode-button" data-mode="shortBreak" class="pomodoro-clock__button button">Short break</button>
+                    <button id="long-break-mode-button" data-mode="longBreak" class="pomodoro-clock__button button">Long break</button>
+                </div>
+                <div class="pomodoro-clock__timer-container timer">
+                    <div class="timer__semicircle"></div>
+                    <div class="timer__semicircle"></div>
+                    <div class="timer__semicircle"></div>
+                    <!-- <div class="timer__outermost-circle">
+                        <img src="/src/tomato-timerrr.svg" alt="tomato image" width="100%" height="100%">
+                    </div> -->
+                    <p class="timer__value"></p>
+                </div>
+                <div class="pomodoro-clock__button-container">
+                    <button id="start" class="pomodoro-clock__button button">Start</button>
+                    <button id="pause" class="pomodoro-clock__button button">Pause</button>
+                    <button id="reset" class="pomodoro-clock__button button">Reset</button>
+                </div>
+                <div class="pomodoro-clock__pomodoro-counter pomodoro-counter">
+                    <div class="pomodoro-counter__container">
+                        <p class="pomodoro-counter__pomodoro-count">Pomodoro: 0</p>
+                        <button class="pomodoro-counter__button button">Clear</button>
+                    </div>
+                    <div class="pomodoro-counter__img-container">
+                    </div>
+                </div>    
+            </div>
+        </section>
+
+        <div class="page__modal modal closed">
+            <div class="modal__container">
+                <h2 class="modal__heading">
+                    Parameters
+                </h2>
+
+                <button class="modal__close-button"></button>
+
+                <div class="modal__parameters parameters">
+                    <h3 class="parameters__heading">
+                        Timer
+                    </h3>
+                    <div class="modal__parameter parameter">
+                        <label class="parameter__name" for="pomodoroLength">Pomodoro</label>
+                        <input class="parameter__input" type="number" id="pomodoroLength" data-mode="pomodoro" min="1" max="90" value="25">
+                    </div>
+                    <div class="modal__parameter parameter">
+                        <label class="parameter__name" for="shortBreakLength">Short break</label>
+                        <input class="parameter__input" type="number" id="shortBreakLength" data-mode="shortBreak" min="1" max="90" value="5">
+                    </div>
+                    <div class="modal__parameter parameter">
+                        <label class="parameter__name" for="longBreakLength">Long break</label>
+                        <input class="parameter__input" type="number" id="longBreakLength" data-mode="longBreak" min="1" max="90" value="15">
+                    </div>
+                    <span class="parameters__error-message error-message hidden">Enter correct value(from 1 to 90 min's)</span>
+                </div>
+
+
+                <div class="modal__parameters mods">
+                    <h3 class="mods__heading">
+                        Auto start
+                    </h3>
+                    <div class="mods__mode mode">
+                        <label class="mode__name" for="autoBreak">Auto Start Breaks</label>
+                        <input type="checkbox" class="mode__button" id="autoBreak"/>
+                    </div>
+                    <div class="mods__mode mode">
+                        <label class="mode__name" for="autoPomodoro">Auto Start Pomodoros</label>
+                        <input type="checkbox" class="mode__button" id="autoPomodoro"/>
+                    </div>
+                    <div class="mods__notification mode">
+                        <label class="mode__name" for="notifications">Notifications</label>
+                        <input type="checkbox" class="mode__button" id="notifications"/>
+                        <span class="mods__error-message error-message hidden">We need your permission to send notifications</span>
+                    </div>
+                </div>
+
+                <div class="modal__parameters sound">
+                    <h3 class="sound__heading">
+                        Sound
+                    </h3>
+                    <div class="sound__mode">
+                        <label class="sound__label" for="sound">Sound</label>
+                        <input type="checkbox" class="mode__button sound__button" id="sound"/>
+                    </div>
+                    <div class="sound__volume">
+                        <label class="sound__label" for="volume">Volume</label>
+                        <input type="range" class="sound__range" min="0" max="100" id="volume"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+let DEFAULT_PARAMETERS = {
+    pomodoro: {
+        mins: 45,
+    },
+
+    shortBreak: {
+        mins: 5  
+    },
+
+    longBreak: {
+        mins: 15  
+    },
+
+    autoBreak: true,
+    autoPomodoro: true,
+    notifications: false,
+    sound: true,
+    volume: 10
+}
+
+export {DEFAULT_PARAMETERS};
