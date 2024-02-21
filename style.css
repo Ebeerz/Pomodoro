@@ -139,7 +139,7 @@ body {
     align-items: center;
     z-index: 1;
     position: relative;
-    background-image: url("/src/tomato-full.svg");
+    background-image: url("./src/tomato-full.svg");
     background-size: 100%;
 }
 
@@ -201,7 +201,7 @@ body {
     z-index: 4;
     /* background-color: #FF7059; */
     background-color: #c15c5c;
-    background-image: url("/src/tomato-full.svg");
+    background-image: url("./src/tomato-full.svg");
     background-size: 300px;
     background-position: 100% 0%;
     background-repeat: no-repeat;

@@ -22,7 +22,7 @@ const notify = (text) =>  {
     const notification = new Notification(
         'Pomodoro notification', {
             body: text,
-            icon: 'src/tomato-full.svg',
+            icon: './src/tomato-full.svg',
             tag: 'pomodoro message'
         }
     )

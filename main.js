@@ -20,7 +20,7 @@ const pomodoroCounterButton = document.querySelector('.pomodoro-counter__button'
 const mods = document.querySelectorAll('.mode__button');
 const errorMessage = modal.querySelector('.parameters__error-message');
 const volumeRange = document.querySelector('.sound__range');
-const audio = new Audio('src/clock-alarm.mp3');
+const audio = new Audio('./src/clock-alarm.mp3');
 
 let parameters;
 
@@ -112,14 +112,14 @@ const pomodoroCountChange = () => {
     switch(pomodoroCount) {
         case 0:
             pomodoroCounterImgContainer.innerHTML = '';
-            pomodoroImg.src = '/src/tomato-empty.svg';
+            pomodoroImg.src = './src/tomato-empty.svg';
             break;
         case 1:
             pomodoroCounterImgContainer.innerHTML = '';
-            pomodoroImg.src = '/src/tomato-full.svg';
+            pomodoroImg.src = './src/tomato-full.svg';
             break;
         default:
-            pomodoroImg.src = '/src/tomato-full.svg';
+            pomodoroImg.src = './src/tomato-full.svg';
     }
     pomodoroCounterImgContainer.appendChild(pomodoroImg);
 }
