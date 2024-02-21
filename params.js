@@ -1,6 +1,6 @@
 let DEFAULT_PARAMETERS = {
     pomodoro: {
-        mins: 45,
+        mins: 25,
     },
 
     shortBreak: {

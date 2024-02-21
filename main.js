@@ -30,10 +30,6 @@ if (localStorage.getItem('parameters')) {
     parameters = DEFAULT_PARAMETERS;
 }
 
-
-let autoBreak = parameters['autoBreak'];
-let autoPomodoro = parameters['autoPomodoro'];
-let notifications = parameters['notifications'];
 let activeButton = pomodoroModeButton;
 const SECOND = 1000;
 let isActive = false;
@@ -43,7 +39,6 @@ let secs = 0;
 let settedTime = mins*60+secs; 
 let timerID;
 let pomodoroCount = 0;
-let sound = parameters['sound'];
 
 const turnOnTimer = () => {
     if (!isActive) {
@@ -58,10 +53,6 @@ const turnOffTimer = () => {
     mins = parameters[mode].mins;
     secs = 0;
     settedTime = mins*60;
-    autoBreak = parameters['autoBreak'];
-    autoPomodoro = parameters['autoPomodoro'];
-    notifications = parameters['notifications'];
-    sound = parameters['sound'];
     setTime();
 }
 
@@ -81,13 +72,13 @@ const calculateTime = () => {
             setTime();
         } else {
             isActive = false;
-            if (sound) playSound();
+            if (parameters['sound']) playSound();
             clearInterval(timerID);
             if (mode == 'pomodoro') {
                 pomodoroCount += 1;
                 pomodoroCountChange();
-                if (notifications) notify('It`s time for break!');
-                if (autoBreak) {
+                if (parameters['notifications']) notify('It`s time for break!');
+                if (parameters['autoBreak']) {
                     pomodoroCount %  4 == 0 ? changeMode(longBreakModeButton) : changeMode(shortBreakModeButton);
                     turnOffTimer();
                     turnOnTimer();
@@ -95,7 +86,7 @@ const calculateTime = () => {
             } else {
                 if (autoPomodoro) {
                     changeMode(pomodoroModeButton)
-                    if (notifications) notify('It`s time for work!');
+                    if (parameters['notifications']) notify('It`s time for work!');
                     turnOffTimer();
                     turnOnTimer();
                 }
@@ -127,7 +118,6 @@ const pomodoroCountChange = () => {
 const setTime = () => {
     timer.textContent = `${addZero(mins)}:${addZero(secs)}`;
     const remainingTime = (mins*60 + secs);
-    settedTime
     const angle = -(remainingTime / settedTime) * 360;
 
     if (angle < -180) {
