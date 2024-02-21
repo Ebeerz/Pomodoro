@@ -207,13 +207,24 @@ body {
     background-repeat: no-repeat;
 }
 
-.timer__outermost-circle {
+@media (max-width: 1600px) {
+    .timer__semicircle:nth-child(3) {
+        background-size: 250px;
+    }
+}
+@media (max-width: 500px) {
+    .timer__semicircle:nth-child(3) {
+        background-size: 75vw;
+    }
+}
+
+/* .timer__outermost-circle {
     position: absolute;
     width: 300px;
     height: 300px;
     border-radius: 50%;
     z-index: 5;    
-}
+} */
 
 .timer__value {
     z-index: 5;
@@ -247,6 +258,42 @@ body {
     height: 42px;
 }
 
+.pomodoro-clock__icon-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.icon-button {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(186, 73, 73);
+    border: none;
+    border-radius: 25%;
+    position: relative;
+}
+
+.icon-button:hover {
+    background-color: rgb(211, 95, 95);
+}
+
+
+.icon-button__icon {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 15px;
+    left: 15px
+}
+
+#skip .icon-button__icon {
+    height: 30px;
+    width: 35px;
+    position: absolute;
+    top: 15px;
+    left: 10px
+}
 
 .pomodoro-counter {
     display: flex;

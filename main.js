@@ -5,8 +5,9 @@ import {requestForNotification, notify} from "./notifications.js";
 const parametersButton = document.querySelector('.settings__button');
 const parameterInput = document.querySelectorAll('.parameter__input');
 const startButton = document.querySelector('#start');
-const pauseButton = document.querySelector('#pause');
-const resetButton = document.querySelector('#reset');
+const startButtonIcon = startButton.querySelector('.icon-button__icon');
+const resetButton = document.querySelector('#reset');  
+const skipButton = document.querySelector('#skip');
 const pomodoroModeButton = document.querySelector('#pomodoro-mode-button');
 const shortBreakModeButton = document.querySelector('#short-break-mode-button');
 const longBreakModeButton = document.querySelector('#long-break-mode-button');
@@ -45,6 +46,7 @@ const turnOnTimer = () => {
         isActive = true;
         timerID = setInterval(calculateTime, SECOND);
     }
+    startButtonIcon.src = './src/pause-button.svg';
 }
 
 const turnOffTimer = () => {
@@ -54,12 +56,24 @@ const turnOffTimer = () => {
     secs = 0;
     settedTime = mins*60;
     setTime();
+    startButtonIcon.src = './src/play-button.svg';
 }
 
 const stopTimer = () => {
     clearInterval(timerID);
     isActive = false;
+    startButtonIcon.src = './src/play-button.svg';
 }
+
+const skipTimer = () => {
+    secs = 0;
+    mins = 0;
+}
+
+const onPlayButton = () => {
+    (isActive) ? stopTimer() : turnOnTimer();
+}
+
 
 const calculateTime = () => {
     if (secs != 0) {
@@ -234,8 +248,8 @@ const volumeChange = (evt) => {
 
 pomodoroCounterButton.addEventListener('click', resetPomodoroCount);
 parametersButton.addEventListener('click', openModal);
-startButton.addEventListener('click', turnOnTimer);
-pauseButton.addEventListener('click', stopTimer);
+startButton.addEventListener('click', onPlayButton);
+skipButton.addEventListener('click', skipTimer);
 resetButton.addEventListener('click', turnOffTimer);
 pomodoroModeButton.addEventListener('click', changeModeOnButton);
 shortBreakModeButton.addEventListener('click', changeModeOnButton);
