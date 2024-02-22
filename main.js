@@ -66,8 +66,11 @@ const stopTimer = () => {
 }
 
 const skipTimer = () => {
-    secs = 0;
-    mins = 0;
+    if (isActive) {
+        secs = 0;
+        mins = 0;
+    }
+
 }
 
 const onPlayButton = () => {
