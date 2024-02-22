@@ -2,8 +2,6 @@ import {DEFAULT_PARAMETERS} from "./params.js";
 import {addZero,checkInteger} from "./util.js";
 import {requestForNotification, notify} from "./notifications.js";
 
-const parametersButton = document.querySelector('.settings__button');
-const parameterInput = document.querySelectorAll('.parameter__input');
 const startButton = document.querySelector('#start');
 const startButtonIcon = startButton.querySelector('.icon-button__icon');
 const resetButton = document.querySelector('#reset');  
@@ -11,13 +9,15 @@ const skipButton = document.querySelector('#skip');
 const pomodoroModeButton = document.querySelector('#pomodoro-mode-button');
 const shortBreakModeButton = document.querySelector('#short-break-mode-button');
 const longBreakModeButton = document.querySelector('#long-break-mode-button');
-const modal = document.querySelector('.modal');
-const modalCloseButton = modal.querySelector('.modal__close-button');
 const timer = document.querySelector('.timer__value');
 const timerSemicircles = document.querySelectorAll('.timer__semicircle');
 const pomodoroCounter = document.querySelector('.pomodoro-counter__pomodoro-count');
 const pomodoroCounterImgContainer = document.querySelector('.pomodoro-counter__img-container');
 const pomodoroCounterButton = document.querySelector('.pomodoro-counter__button');
+const parametersButton = document.querySelector('.settings__button');
+const modal = document.querySelector('.modal');
+const modalCloseButton = modal.querySelector('.modal__close-button');
+const parameterInput = modal.querySelectorAll('.parameter__input');
 const mods = document.querySelectorAll('.mode__button');
 const errorMessage = modal.querySelector('.parameters__error-message');
 const volumeRange = document.querySelector('.sound__range');
@@ -89,25 +89,28 @@ const calculateTime = () => {
             setTime();
         } else {
             isActive = false;
+            turnOffTimer();
             if (parameters['sound']) playSound();
             clearInterval(timerID);
-            if (mode == 'pomodoro') {
-                pomodoroCount += 1;
-                pomodoroCountChange();
-                if (parameters['notifications']) notify('It`s time for break!');
-                if (parameters['autoBreak']) {
-                    pomodoroCount %  4 == 0 ? changeMode(longBreakModeButton) : changeMode(shortBreakModeButton);
-                    turnOffTimer();
-                    turnOnTimer();
-                }
-            } else {
-                if (autoPomodoro) {
-                    changeMode(pomodoroModeButton)
-                    if (parameters['notifications']) notify('It`s time for work!');
-                    turnOffTimer();
-                    turnOnTimer();
-                }
-            }
+            autoModeChange()
+        }
+    }
+}
+
+const autoModeChange = () => {
+    if (mode == 'pomodoro') {
+        pomodoroCount += 1;
+        pomodoroCountChange();
+        if (parameters['notifications']) notify('It`s time for break!');
+        if (parameters['autoBreak']) {
+            pomodoroCount %  4 == 0 ? changeMode(longBreakModeButton) : changeMode(shortBreakModeButton);
+            turnOnTimer();
+        }
+    } else {
+        if (autoPomodoro) {
+            changeMode(pomodoroModeButton)
+            if (parameters['notifications']) notify('It`s time for work!');
+            turnOnTimer();
         }
     }
 }

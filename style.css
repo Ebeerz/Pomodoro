@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    /* background-color: #7EB685; */
     background-color: rgb(186, 73, 73);
     font-family: "PT Sans", sans-serif;
     font-size: 18px;
@@ -30,7 +29,6 @@ body {
     font-size: 18px;
     display: block;
     color: #fff;
-    /* background-color: #7EB685; */
     background-color: rgb(186, 73, 73);
     border: none;
     border-radius: 15px;
@@ -130,7 +128,6 @@ body {
     width: 300px;
     height: 300px;
     margin: 0 auto;
-    /* border: 4px solid #fff; */
     border: 4px solid #E65F5f;
     overflow: hidden;
     border-radius: 50%;
@@ -180,26 +177,20 @@ body {
     right: 0;
     transform-origin: left center;
     transition: transform 0.8s;
-    /* display: none; */
 }
 
 .timer__semicircle:nth-child(1) {
     z-index: 2;
-
-    /* background-color: #FF7059; */
     background-color: #c15c5c;
 }
 
 .timer__semicircle:nth-child(2) {
     z-index: 3;
-
-    /* background-color: #FF7059; */
     background-color: #c15c5c;
 }
 
 .timer__semicircle:nth-child(3) {
     z-index: 4;
-    /* background-color: #FF7059; */
     background-color: #c15c5c;
     background-image: url("./src/tomato-full.svg");
     background-size: 300px;
@@ -218,32 +209,9 @@ body {
     }
 }
 
-/* .timer__outermost-circle {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    z-index: 5;    
-} */
-
 .timer__value {
     z-index: 5;
 }
-
-/* hover testing */
-
-/* .page-main:hover .timer__semicircle:nth-child(1){
-    transform: rotate(180deg);
-    transition: 1s linear;
-}
-.page-main:hover .timer__semicircle:nth-child(2){
-    transform: rotate(360deg);
-    transition: 2s linear;
-}
-.page-main:hover .timer__semicircle:nth-child(3){
-    opacity: 0;
-    transition: opacity 0s 1s;
-} */
 
 .timer__value {
     font-size: 50px;
@@ -433,8 +401,6 @@ body {
     }
 }
 
-
-
 .parameters__heading {
     margin: 5px 0 5px 0;
     padding: 0;
@@ -447,7 +413,6 @@ body {
     grid-column-start: 1;
     grid-column-end: 4;
 }
-
 
 .parameter__input {
     background-color: #efefef;
@@ -542,8 +507,6 @@ body {
     left: 73px;
 }
 
-  
-
 /* The slider itself */
 .sound__range {
     position: absolute;
@@ -560,7 +523,7 @@ body {
 
 /* Mouse-over effects */
 .sound__range:hover {
-opacity: 1; /* Fully shown on mouse-over */
+    opacity: 1; /* Fully shown on mouse-over */
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
