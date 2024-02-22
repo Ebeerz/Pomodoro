@@ -470,6 +470,55 @@ body {
     margin: 10px 0 10px 0;
 }
 
+.mode__switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+    margin: 0 10px;
+    top:5px;
+}
+
+.mode__slider {
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.mode__button {
+    display: none;
+}
+
+.mode__button:checked + .mode__slider {
+    background-color: #90da37;
+}
+
+.mode__button:checked + .mode__slider::before {
+    left: 85%;
+    top:50%;
+    transform:translate(-85%, -50%); 
+}
+
+.mode__slider::before {
+    position: absolute;
+    content: '';
+    height: 16px;
+    width: 16px;
+    left: 15%;
+    top:50%;
+    transform:translate(-15%, -50%); 
+    background-color: #fff;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+
 .sound {
     padding: 0px 0px 10px 0;
     font-size: 20px;
@@ -494,6 +543,7 @@ body {
 }
 
   
+
 /* The slider itself */
 .sound__range {
     position: absolute;

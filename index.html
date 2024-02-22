@@ -89,15 +89,27 @@
                     </h3>
                     <div class="mods__mode mode">
                         <label class="mode__name" for="autoBreak">Auto Start Breaks</label>
-                        <input type="checkbox" class="mode__button" id="autoBreak"/>
+                        <label class="mode__switch">
+                            <input type="checkbox" class="mode__button" id="autoBreak">
+                                <span class="mode__slider"></span>
+                            </input>
+                        </label>
                     </div>
                     <div class="mods__mode mode">
                         <label class="mode__name" for="autoPomodoro">Auto Start Pomodoros</label>
-                        <input type="checkbox" class="mode__button" id="autoPomodoro"/>
+                        <label class="mode__switch">
+                            <input type="checkbox" class="mode__button" id="autoPomodoro">
+                                <span class="mode__slider"></span>
+                            </input>
+                        </label>
                     </div>
                     <div class="mods__notification mode">
                         <label class="mode__name" for="notifications">Notifications</label>
-                        <input type="checkbox" class="mode__button" id="notifications"/>
+                        <label class="mode__switch">
+                            <input type="checkbox" class="mode__button" id="notifications">
+                                <span class="mode__slider"></span>
+                            </input>
+                        </label>
                         <span class="mods__error-message error-message hidden">We need your permission to send notifications</span>
                     </div>
                 </div>
@@ -108,7 +120,11 @@
                     </h3>
                     <div class="sound__mode">
                         <label class="sound__label" for="sound">Sound</label>
-                        <input type="checkbox" class="mode__button sound__button" id="sound"/>
+                        <label class="mode__switch">
+                            <input type="checkbox" class="mode__button sound__button" id="sound">
+                                <span class="mode__slider"></span>
+                            </input>
+                        </label>
                     </div>
                     <div class="sound__volume">
                         <label class="sound__label" for="volume">Volume</label>
