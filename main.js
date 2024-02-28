@@ -67,8 +67,7 @@ const stopTimer = () => {
 
 const skipTimer = () => {
     if (isActive) {
-        secs = 0;
-        mins = 0;
+        autoModeChange();
     }
 
 }
@@ -89,8 +88,6 @@ const calculateTime = () => {
             setTime();
         } else {
             isActive = false;
-            turnOffTimer();
-            if (parameters['sound']) playSound();
             clearInterval(timerID);
             autoModeChange()
         }
@@ -101,15 +98,19 @@ const autoModeChange = () => {
     if (mode == 'pomodoro') {
         pomodoroCount += 1;
         pomodoroCountChange();
+        pomodoroCount %  4 == 0 ? changeMode(longBreakModeButton) : changeMode(shortBreakModeButton);
+        turnOffTimer();
         if (parameters['notifications']) notify('It`s time for break!');
+        if (parameters['sound']) playSound();
         if (parameters['autoBreak']) {
-            pomodoroCount %  4 == 0 ? changeMode(longBreakModeButton) : changeMode(shortBreakModeButton);
             turnOnTimer();
         }
     } else {
-        if (autoPomodoro) {
-            changeMode(pomodoroModeButton)
-            if (parameters['notifications']) notify('It`s time for work!');
+        changeMode(pomodoroModeButton);
+        turnOffTimer();
+        if (parameters['notifications']) notify('It`s time for work!');
+        if (parameters['sound']) playSound();
+        if (parameters['autoPomodoro']) {
             turnOnTimer();
         }
     }
